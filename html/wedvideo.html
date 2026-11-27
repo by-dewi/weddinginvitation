@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Hyoseop & Mega</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cormorant Garamond, Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#F9F5EB',
+                            200: '#F1E8D5',
+                            300: '#E5D4B3',
+                        },
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#C5A059',
+                            600: '#A6823C',
+                        },
+                        sage: {
+                            50: '#F4F7F4',
+                            100: '#E4ECE4',
+                            600: '#5C725D',
+                            700: '#465947',
+                            800: '#354436',
+                        },
+                        espresso: {
+                            800: '#3D2E24',
+                            900: '#2A1F18',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations & Decorative Styles */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1.5deg); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-float {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+        .animate-spin-slow {
+            animation: spinSlow 8s linear infinite;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .arch-frame {
+            border-radius: 9999px 9999px 24px 24px;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F5EB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-espresso-900 font-sans antialiased selection:bg-gold-500 selection:text-white overflow-x-hidden">
+    <!-- =====================================================================
+         1. COVER / SAMPUL UNDANGAN (OPENING OVERLAY)
+    ====================================================================== -->
+    <div id="invitation-cover" class="fixed inset-0 z-50 flex items-center justify-center bg-espresso-900 text-cream-50 transition-all duration-1000 ease-in-out overflow-hidden">
+        <!-- Background Image with Dark Warm Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="../source/prewed1.jpeg" 
+                 onerror="this.src='https://placehold.co/1600x900/2A1F18/C5A059?text=hyoseop+%26+Mega'"
+                 alt="Wedding Cover" 
+                 class="w-full h-full object-cover opacity-35 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b from-espresso-900/80 via-espresso-900/60 to-espresso-900/95"></div>
+        </div>
+
+        <!-- Decorative Corner SVG Florals -->
+        <svg class="absolute top-0 left-0 w-40 h-40 sm:w-56 sm:h-56 text-gold-500/30 pointer-events-none" viewBox="0 0 200 200" fill="none">
+            <path d="M0 0 C80 10, 120 50, 140 130 C90 110, 40 80, 0 0 Z" fill="currentColor"/>
+            <path d="M10 0 C95 25, 145 75, 175 165" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="95" cy="65" r="4" fill="currentColor"/>
+            <circle cx="125" cy="100" r="3" fill="currentColor"/>
+        </svg>
+        <svg class="absolute bottom-0 right-0 w-40 h-40 sm:w-56 sm:h-56 text-gold-500/30 pointer-events-none rotate-180" viewBox="0 0 200 200" fill="none">
+            <path d="M0 0 C80 10, 120 50, 140 130 C90 110, 40 80, 0 0 Z" fill="currentColor"/>
+            <path d="M10 0 C95 25, 145 75, 175 165" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+        </svg>
+
+        <!-- Cover Content Card -->
+        <div class="relative z-10 max-w-lg w-full mx-4 px-6 py-10 sm:p-12 text-center border border-gold-500/40 rounded-3xl bg-espresso-900/50 backdrop-blur-md shadow-2xl">
+            <p class="uppercase tracking-[0.28em] text-xs sm:text-sm text-gold-400 font-medium mb-3">The Wedding of</p>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl font-semibold text-cream-50 tracking-wide mb-3">
+                Hyoseop <span class="font-cormorant italic text-gold-400 font-normal">&amp;</span> Mega
+            </h1>
+            
+            <div class="flex items-center justify-center gap-3 my-4">
+                <span class="h-[1px] w-12 bg-gold-500/50"></span>
+                <p class="font-cormorant italic text-lg sm:text-xl text-cream-200">Sabtu, 16 Januari 2027</p>
+                <span class="h-[1px] w-12 bg-gold-500/50"></span>
+            </div>
+
+            <!-- Guest Name Box -->
+            <div class="mt-8 mb-8 py-4 px-5 rounded-2xl bg-cream-50/10 border border-cream-200/20">
+                <p class="text-xs text-cream-200/80 tracking-wider uppercase mb-1">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                <h2 id="guest-name-display" class="font-serif text-xl sm:text-2xl font-medium text-gold-400 break-words">
+                    Tamu Undangan
+                </h2>
+                <p class="text-[11px] text-cream-200/60 mt-1">Mohon maaf apabila ada kesalahan penulisan nama/gelar</p>
+            </div>
+
+            <!-- Open Invitation Button -->
+            <button id="open-invitation-btn" type="button" 
+                class="group inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-white font-medium text-sm sm:text-base shadow-lg shadow-gold-600/30 hover:shadow-gold-500/50 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer">
+                <i class="fa-solid fa-envelope-open-text group-hover:rotate-12 transition-transform"></i>
+                <span>Buka Undangan</span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="../source/BeautifulInWhite.mp3" type="audio/mpeg">
+        <source src="../source/BeautifulInWhite.m4a" type="audio/mp4">
+    </audio>
+    
+    <!-- =====================================================================
+         MAIN CONTENT WRAPPER
+    ====================================================================== -->
+    <main id="main-content" class="pb-24">
+    <video
+    src="../source/Mega.mp4"
+    controls
+    muted
+    playsinline
+    preload="metadata"
+    class="w-full rounded-xl"
+    ></video>
+
+    <!-- =====================================================================
+         FLOATING MUSIC BUTTON (WEB AUDIO API PIANO)
+    ====================================================================== -->
+    <button id="music-toggle-btn" type="button" aria-label="Putar atau Jeda Musik"
+        class="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-40 w-12 h-12 rounded-full bg-espresso-900/90 text-gold-400 border border-gold-500/50 shadow-xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
+        <i id="music-icon" class="fa-solid fa-compact-disc text-xl"></i>
+    </button>
+
+    <!-- =====================================================================
+         FLOATING BOTTOM NAVIGATION BAR
+    ====================================================================== -->
+    <nav aria-label="Navigasi Undangan" class="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[94%] max-w-md bg-espresso-900/90 backdrop-blur-md border border-gold-500/40 rounded-full px-3 py-2 shadow-2xl">
+        <ul class="flex items-center justify-around text-cream-100 text-[11px]">
+            <li>
+                <a href="#couple" class="flex flex-col items-center gap-1 px-2.5 py-1 rounded-full hover:text-gold-400 transition-colors">
+                    <i class="fa-solid fa-heart text-sm"></i>
+                    <span>Mempelai</span>
+                </a>
+            </li>
+            <li>
+                <a href="#events" class="flex flex-col items-center gap-1 px-2.5 py-1 rounded-full hover:text-gold-400 transition-colors">
+                    <i class="fa-regular fa-calendar-check text-sm"></i>
+                    <span>Acara</span>
+                </a>
+            </li>
+            <li>
+                <a href="#gallery" class="flex flex-col items-center gap-1 px-2.5 py-1 rounded-full hover:text-gold-400 transition-colors">
+                    <i class="fa-regular fa-images text-sm"></i>
+                    <span>Galeri</span>
+                </a>
+            </li>
+            <li>
+                <a href="#gift" class="flex flex-col items-center gap-1 px-2.5 py-1 rounded-full hover:text-gold-400 transition-colors">
+                    <i class="fa-solid fa-gift text-sm"></i>
+                    <span>Amplop</span>
+                </a>
+            </li>
+            <li>
+                <a href="#rsvp" class="flex flex-col items-center gap-1 px-2.5 py-1 rounded-full hover:text-gold-400 transition-colors">
+                    <i class="fa-regular fa-comment-dots text-sm"></i>
+                    <span>Ucapan</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- =====================================================================
+         LIGHTBOX MODAL FOR GALLERY
+    ====================================================================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-espresso-900/90 backdrop-blur-sm p-4" onclick="closeLightbox()">
+        <button type="button" aria-label="Tutup Preview" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center text-xl cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Preview Foto" class="max-h-[85vh] max-w-full rounded-2xl shadow-2xl border-2 border-gold-500/40" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- =====================================================================
+         TOAST NOTIFICATION
+    ====================================================================== -->
+    <div id="toast-notification" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 -translate-y-4 transition-all duration-300">
+        <div class="flex items-center gap-2.5 px-5 py-3 rounded-full bg-espresso-900 text-cream-50 border border-gold-500/50 shadow-xl text-xs sm:text-sm font-medium">
+            <i class="fa-solid fa-circle-check text-gold-400"></i>
+            <span id="toast-message">Berhasil disalin!</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT: INTERACTIVITY, WEB AUDIO PIANO, COUNTDOWN, RSVP & ICS
+    ====================================================================== -->
+    <script>
+        /* -------------------------------------------------------------------
+           1. PARSE GUEST NAME FROM URL PARAMETER (?to=Nama+Tamu)
+        ------------------------------------------------------------------- */
+        function initGuestName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestParam = urlParams.get('to');
+            const guestDisplay = document.getElementById('guest-name-display');
+            const senderInput = document.getElementById('sender-name');
+
+            if (guestParam && guestParam.trim() !== '') {
+                const cleanName = guestParam.trim();
+                guestDisplay.textContent = cleanName;
+                if (senderInput) senderInput.value = cleanName;
+            }
+        }
+
+        /* -------------------------------------------------------------------
+           2. WEB AUDIO API: ROMANTIC SOFT PIANO INSTRUMENTAL SYNTHESIZER
+        ------------------------------------------------------------------- */
+        // let audioCtx = null;
+        // let isPlaying = false;
+        // let melodyTimer = null;
+        // let noteIndex = 0;
+
+        // // Melodi lembut terinspirasi Canon in D / Romantic Piano Arpeggio (Frekuensi Hz)
+        // const romanticMelody = [
+        //     { freq: 329.63, dur: 0.9 }, // E4
+        //     { freq: 293.66, dur: 0.9 }, // D4
+        //     { freq: 261.63, dur: 0.9 }, // C4
+        //     { freq: 246.94, dur: 0.9 }, // B3
+        //     { freq: 220.00, dur: 0.9 }, // A3
+        //     { freq: 196.00, dur: 0.9 }, // G3
+        //     { freq: 220.00, dur: 0.9 }, // A3
+        //     { freq: 246.94, dur: 0.9 }, // B3
+        //     { freq: 392.00, dur: 0.9 }, // G4
+        //     { freq: 329.63, dur: 0.9 }, // E4
+        //     { freq: 349.23, dur: 0.9 }, // F4
+        //     { freq: 293.66, dur: 0.9 }, // D4
+        //     { freq: 329.63, dur: 0.9 }, // E4
+        //     { freq: 261.63, dur: 0.9 }, // C4
+        //     { freq: 293.66, dur: 1.2 }, // D4
+        //     { freq: 246.94, dur: 1.2 }  // B3
+        // ];
+
+        // function playPianoNote(freq, duration) {
+        //     if (!audioCtx || !isPlaying) return;
+
+        //     const now = audioCtx.currentTime;
+        //     const osc = audioCtx.createOscillator();
+        //     const subOsc = audioCtx.createOscillator();
+        //     const gainNode = audioCtx.createGain();
+
+        //     // Menggunakan gelombang sine + triangle lembut menyerupai felt piano
+        //     osc.type = 'sine';
+        //     osc.frequency.setValueAtTime(freq, now);
+
+        //     subOsc.type = 'triangle';
+        //     subOsc.frequency.setValueAtTime(freq * 2, now); // Harmonic lembut
+
+        //     const subGain = audioCtx.createGain();
+        //     subGain.gain.setValueAtTime(0.025, now);
+
+        //     // Envelope ADSR piano lembut
+        //     gainNode.gain.setValueAtTime(0.0001, now);
+        //     gainNode.gain.exponentialRampToValueAtTime(0.14, now + 0.08);
+        //     gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration * 1.6);
+
+        //     osc.connect(gainNode);
+        //     subOsc.connect(subGain);
+        //     subGain.connect(gainNode);
+        //     gainNode.connect(audioCtx.destination);
+
+        //     osc.start(now);
+        //     subOsc.start(now);
+        //     osc.stop(now + duration * 1.7);
+        //     subOsc.stop(now + duration * 1.7);
+        // }
+
+        // function scheduleNextNote() {
+        //     if (!isPlaying) return;
+        //     const current = romanticMelody[noteIndex];
+        //     playPianoNote(current.freq, current.dur);
+        //     noteIndex = (noteIndex + 1) % romanticMelody.length;
+        //     melodyTimer = setTimeout(scheduleNextNote, current.dur * 850);
+        // }
+
+        // function startMusic() {
+        //     try {
+        //         if (!audioCtx) {
+        //             const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        //             audioCtx = new AudioContextClass();
+        //         }
+        //         if (audioCtx.state === 'suspended') {
+        //             audioCtx.resume();
+        //         }
+        //         if (!isPlaying) {
+        //             isPlaying = true;
+        //             document.getElementById('music-icon').classList.add('animate-spin-slow');
+        //             scheduleNextNote();
+        //         }
+        //     } catch (e) {
+        //         console.warn('Web Audio API tidak didukung di browser ini:', e);
+        //     }
+        // }
+
+        // function stopMusic() {
+        //     isPlaying = false;
+        //     clearTimeout(melodyTimer);
+        //     document.getElementById('music-icon').classList.remove('animate-spin-slow');
+        // }
+
+        // document.getElementById('music-toggle-btn').addEventListener('click', () => {
+        //     if (isPlaying) {
+        //         stopMusic();
+        //         showToast('Musik latar dijeda');
+        //     } else {
+        //         startMusic();
+        //         showToast('Memutar melodi piano romantis');
+        //     }
+        // });
+
+
+
+        /* -------------------------------------------------------------------
+        2. BACKGROUND MUSIC MP3
+        ------------------------------------------------------------------- */
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
+
+        function startMusic() {
+            if (!bgMusic) return;
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                musicIcon?.classList.add('animate-spin-slow');
+            }).catch((err) => {
+                console.warn('Audio gagal diputar:', err);
+            });
+        }
+
+        function stopMusic() {
+            if (!bgMusic) return;
+            bgMusic.pause();
+            isPlaying = false;
+            musicIcon?.classList.remove('animate-spin-slow');
+        }
+
+        document.getElementById('music-toggle-btn')?.addEventListener('click', () => {
+            if (isPlaying) {
+                stopMusic();
+                showToast('Musik latar dijeda');
+            } else {
+                startMusic();
+                showToast('Memutar musik latar');
+            }
+        });
+
+
+        /* -------------------------------------------------------------------
+           3. COVER OPENING TRANSITION
+        ------------------------------------------------------------------- */
+        document.getElementById('open-invitation-btn').addEventListener('click', () => {
+            const cover = document.getElementById('invitation-cover');
+            cover.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+            startMusic();
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 1000);
+        });
+
+        /* -------------------------------------------------------------------
+           4. COUNTDOWN TIMER (TARGET: 16 JANUARI 2027 08:00 WIB)
+        ------------------------------------------------------------------- */
+        function startCountdown() {
+            const targetDate = new Date('2027-01-16T08:00:00+07:00').getTime();
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance <= 0) {
+                    document.getElementById('cd-days').textContent = '00';
+                    document.getElementById('cd-hours').textContent = '00';
+                    document.getElementById('cd-minutes').textContent = '00';
+                    document.getElementById('cd-seconds').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+                document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        /* -------------------------------------------------------------------
+           5. DOWNLOAD CALENDAR (.ICS FILE GENERATOR)
+        ------------------------------------------------------------------- */
+        function downloadICS(title, startDateTime, endDateTime, location) {
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Hyosop & Mega Wedding//ID',
+                'BEGIN:VEVENT',
+                `DTSTART:${startDateTime}`,
+                `DTEND:${endDateTime}`,
+                `SUMMARY:${title}`,
+                `LOCATION:${location}`,
+                'DESCRIPTION:Undangan Pernikahan Ahn Hyo Seop & Eva Mega Putri',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${title.replace(/\s+/g, '_')}.ics`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            showToast('File kalender (.ics) berhasil diunduh!');
+        }
+
+        /* -------------------------------------------------------------------
+           6. GALLERY LIGHTBOX PREVIEW
+        ------------------------------------------------------------------- */
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            const modal = document.getElementById('lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
+            modalImg.src = imgSrc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        /* -------------------------------------------------------------------
+           7. COPY BANK ACCOUNT WITH TOAST NOTIFICATION
+        ------------------------------------------------------------------- */
+        function copyAccount(accountNumber, label) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = accountNumber;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(`${label} berhasil disalin!`);
+            } catch (err) {
+                showToast('Gagal menyalin nomor rekening');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        let toastTimeout = null;
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+
+            toast.classList.remove('opacity-0', '-translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', '-translate-y-4');
+            }, 2800);
+        }
+
+        /* -------------------------------------------------------------------
+           8. RSVP & WISHES (LOCALSTORAGE + DEFAULT GREETINGS)
+        ------------------------------------------------------------------- */
+        const STORAGE_KEY = 'rama_shinta_wishes_v1';
+        const defaultWishes = [
+            {
+                name: 'Yusi & Hajoon',
+                status: 'Hadir',
+                guests: 'Keluarga (3+ Orang)',
+                message: 'Selamat menempuh hidup baru Hyoseop & Mega! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah, serta dikaruniai keturunan yang saleh dan salehah.',
+                time: '2 jam yang lalu'
+            },
+            {
+                name: 'Kim Sejong',
+                status: 'Hadir',
+                guests: '2 Orang',
+                message: 'MasyaAllah, akhirnya hari bahagia yang ditunggu tiba juga! Lancar sampai hari-H ya Mega sayang dan Mas Hyoseop. Sampai bertemu di acara!',
+                time: '5 jam yang lalu'
+            },{
+                name: 'Dewi & Chenle',
+                status: 'Hadir',
+                guests: '2 Orang',
+                message: 'Selamat ya, Semoga menjadi keluarga yang sakinah, mawaddah, warahmah ~',
+                time: '2 jam yang lalu'
+            }
+        ];
+
+        function loadWishes() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            return saved ? JSON.parse(saved) : defaultWishes;
+        }
+
+        function renderWishes() {
+            const wishes = loadWishes();
+            const container = document.getElementById('wishes-container');
+            const countBadge = document.getElementById('wishes-count');
+
+            countBadge.textContent = `${wishes.length} Ucapan`;
+            container.innerHTML = '';
+
+            wishes.forEach((item) => {
+                let badgeClass = 'bg-sage-100 text-sage-800';
+                let iconClass = 'fa-circle-check';
+                if (item.status === 'Tidak Hadir') {
+                    badgeClass = 'bg-red-100 text-red-800';
+                    iconClass = 'fa-circle-xmark';
+                } else if (item.status === 'Masih Ragu') {
+                    badgeClass = 'bg-amber-100 text-amber-800';
+                    iconClass = 'fa-circle-question';
+                }
+
+                const card = document.createElement('div');
+                card.className = 'p-4 rounded-2xl bg-cream-50 border border-cream-200';
+                card.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="font-semibold text-sm text-espresso-900">${escapeHTML(item.name)}</span>
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">
+                                <i class="fa-solid ${iconClass}"></i> ${escapeHTML(item.status)}
+                            </span>
+                        </div>
+                        <span class="text-[11px] text-espresso-800/60">${escapeHTML(item.time)}</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-espresso-800/85 leading-relaxed">${escapeHTML(item.message)}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        document.getElementById('rsvp-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameInput = document.getElementById('sender-name');
+            const statusInput = document.getElementById('attendance-status');
+            const countInput = document.getElementById('guest-count');
+            const messageInput = document.getElementById('wish-message');
+
+            const newWish = {
+                name: nameInput.value.trim(),
+                status: statusInput.value,
+                guests: countInput.value,
+                message: messageInput.value.trim(),
+                time: 'Baru saja'
+            };
+
+            const wishes = loadWishes();
+            wishes.unshift(newWish);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+
+            renderWishes();
+            messageInput.value = '';
+            showToast('Terima kasih! Ucapan & konfirmasi Anda telah terkirim.');
+        });
+
+        /* -------------------------------------------------------------------
+           9. SCROLL REVEAL OBSERVER
+        ------------------------------------------------------------------- */
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            reveals.forEach((el) => observer.observe(el));
+        }
+
+        /* -------------------------------------------------------------------
+           INITIALIZATION ON DOM LOADED
+        ------------------------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            initGuestName();
+            startCountdown();
+            renderWishes();
+            initScrollReveal();
+        });
+    </script>
+</body>
+</html>
