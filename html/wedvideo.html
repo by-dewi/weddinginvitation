@@ -165,7 +165,7 @@
     <!-- =====================================================================
          MAIN CONTENT WRAPPER
     ====================================================================== -->
-    <main id="main-content" class="pb-24">
+    <!-- <main id="main-content" class="pb-24">
     <video
     src="../source/Mega.mp4"
     controls
@@ -173,7 +173,20 @@
     playsinline
     preload="metadata"
     class="w-full rounded-xl"
-    ></video>
+    ></video> -->
+
+    <div class="w-full max-w-md mx-auto overflow-hidden rounded-2xl aspect-[9/16]">
+      <video
+        id="weddingVideo"
+        src="../source/Mega.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="w-full h-full object-cover"
+      ></video>
+    </div>
 
     <!-- =====================================================================
          FLOATING MUSIC BUTTON (WEB AUDIO API PIANO)
